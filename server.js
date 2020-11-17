@@ -37,6 +37,26 @@ app.post('/', function (req, res) {
   });
 })
 
+function initMap() {
+  var lyon = {
+    lat: 45.344,
+    lng: 4.036
+  };
+  var map = new google.maps.Map(
+    document.getElementById('map'), {
+      zoom: 4,
+      center: lyon
+    });
+  var marker = new google.maps.Marker({
+    position: lyon,
+    map: map
+  });
+}
+
+app.get('/', function (req, res) {
+res.render('index');
+})
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Example app listening on port 3000!')
