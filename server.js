@@ -52,7 +52,7 @@ app.post('/', function (req, res) {
       if(staticimage.main == undefined){
         res.render('index', {staticimage: null, error: 'Error, please try again'});
       } else {
-        let staticimageDisplay = ${staticimage};
+        let staticimageDisplay = `${staticimage}`;
         res.render('index', {staticimage: staticimageDisplay, error: null});
       }
     }
