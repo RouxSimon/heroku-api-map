@@ -20,7 +20,7 @@ app.post('/', function (req, res) {
   let urlTomTom = `http://api.tomtom.com/map/1/staticimage?key=${apiKeyTomTom}&zoom=9&center=13.567893,46.112341&format=jpg&layer=basic&style=main&width=1305&height=748&view=Unified&language=en-GB`
 
   console.log("URL: "+url)
-  console.log("URL: "+urlTomTOm)
+  console.log("URL: "+urlTomTom)
   request(url, function (err, response, body) {
     console.log("Status "+response.statusCode);
 
@@ -38,7 +38,7 @@ app.post('/', function (req, res) {
       }
     }
   });
-  request(urlTomTOm);
+  request(urlTomTom);
 })
 
 const PORT = process.env.PORT || 3000;
