@@ -4,6 +4,7 @@ const request = require('request');
 const app = express()
 
 const apiKey = process.env.API_KEY || 'NC';
+const apiKeyTomTom = process.env.TOMTOM || 'NC';
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,8 +17,10 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   let city = req.body.city;
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+  let urlTomTom = `http://api.tomtom.com/map/1/staticimage?key=${apiKeyTomTom}&zoom=9&center=13.567893,46.112341&format=jpg&layer=basic&style=main&width=1305&height=748&view=Unified&language=en-GB`
 
   console.log("URL: "+url)
+  console.log("URL: "+urlTomTOm)
   request(url, function (err, response, body) {
     console.log("Status "+response.statusCode);
 
@@ -35,26 +38,7 @@ app.post('/', function (req, res) {
       }
     }
   });
-})
-
-function initMap() {
-  var lyon = {
-    lat: 45.344,
-    lng: 4.036
-  };
-  var map = new google.maps.Map(
-    document.getElementById('map'), {
-      zoom: 4,
-      center: lyon
-    });
-  var marker = new google.maps.Marker({
-    position: lyon,
-    map: map
-  });
-}
-
-app.get('/', function (req, res) {
-res.render('index');
+  request(urlTomTOm);
 })
 
 const PORT = process.env.PORT || 3000;
