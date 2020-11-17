@@ -39,7 +39,6 @@ app.post('/', function (req, res) {
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
 
   console.log("URL: "+url)
-  console.log("URL: "+urlTomTom)
   request(url, function (err, response, body) {
     console.log("Status "+response.statusCode);
 
