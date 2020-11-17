@@ -39,26 +39,26 @@ app.post('/', function (req, res) {
     }
   });
 
-  request(urlTomTom, function (err, response, body) {
-    console.log("Status "+response.statusCode);
+//   request(urlTomTom, function (err, response, body) {
+//     console.log("Status "+response.statusCode);
 
-    if(response.statusCode == 401){
-      res.render('index', {staticimage: null, error: 'Invalid API token'});
-    } else if(response.statusCode == 404){
-      res.render('index', {staticimage: null, error: 'Map not found'});
-    } else {
-      let staticimage = JSON.parse(body)
+//     if(response.statusCode == 401){
+//       res.render('index', {staticimage: null, error: 'Invalid API token'});
+//     } else if(response.statusCode == 404){
+//       res.render('index', {staticimage: null, error: 'Map not found'});
+//     } else {
+//       let staticimage = JSON.parse(body)
 
-      if(staticimage.main == undefined){
-        res.render('index', {staticimage: null, error: 'Error, please try again'});
-      } else {
-        let staticimageDisplay = `${staticimage}`;
-        res.render('index', {staticimage: staticimageDisplay, error: null});
-      }
-    }
+//       if(staticimage.main == undefined){
+//         res.render('index', {staticimage: null, error: 'Error, please try again'});
+//       } else {
+//         let staticimageDisplay = `${staticimage}`;
+//         res.render('index', {staticimage: staticimageDisplay, error: null});
+//       }
+//     }
 
-  });
-});
+//   });
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
