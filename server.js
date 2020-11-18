@@ -23,9 +23,7 @@ app.post('/', function (req, res) {
   let errorText = null;
   let weatherText = null;
   
-  request(url, function (err, response, body) {
-    console.log("Status "+response.statusCode);
-    
+  request(url, function (err, response, body) {    
     if(response.statusCode == 401){
       errorText='Invalid API token';
     } else if(response.statusCode == 404){
