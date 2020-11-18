@@ -37,7 +37,7 @@ app.post('/', function (req, res) {
       }
     }
 
-    res.render('index', {url2, url3, weather: weatherText, error: errorText});
+    res.render('index', {url2: url2, url3: url3, weather: weatherText, error: errorText});
 
   });
 })
