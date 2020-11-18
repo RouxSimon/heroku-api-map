@@ -19,25 +19,25 @@ app.post('/', function (req, res) {
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
   let url2 = `https://api.tomtom.com/map/1/staticimage?layer=basic&style=main&format=png&center=4.65%2C%2045.11&width=512&height=512&view=Unified&key=${apiKeyTomTom}`;
   let url3 = `http://api.tomtom.com/map/1/staticimage?key=${apiKeyTomTom}&zoom=6&center=4.563,44.11&format=jpg&layer=basic&style=main&width=1305&height=748&view=Unified&language=fr-FR`;
-  let error = null;
+  let errorText = null;
 
   request(url, function (err, response, body) {
     console.log("Status "+response.statusCode);
 
     if(response.statusCode == 401){
-      error='Invalid API token';
+      errorText='Invalid API token';
     } else if(response.statusCode == 404){
-      error='City not found';
+      errorText='City not found';
     } else {
       let weather = JSON.parse(body);
       if(weather.main == undefined){
-        error = 'Error, please try again';
+        errorText = 'Error, please try again';
       } else {
         let weatherText = `It's ${weather.main.temp} degrees in ${weather.name}!`;
       }
     }
 
-    res.render('index', {url2, url3, weather: weatherText, error: null});
+    res.render('index', {url2, url3, weather: weatherText, errorText});
 
   });
 })
