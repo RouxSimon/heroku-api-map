@@ -17,11 +17,11 @@ app.get('/', function (req, res) {
 
 
 
-app.get('/map',  function () { 
+app.get('/map',  function (_req, res) { 
   res.json({url: `https://api.tomtom.com/map/1/staticimage?layer=basic&style=main&format=png&center=4.65%2C%2045.11&width=512&height=512&view=Unified&key=${apiKeyTomTom}`});
 });
 
-app.get('/map2',  function () { 
+app.get('/map2',  function (_req, res) { 
   res.json({url: `http://api.tomtom.com/map/1/staticimage?key=${apiKeyTomTom}&zoom=6&center=4.563,44.11&format=jpg&layer=basic&style=main&width=1305&height=748&view=Unified&language=fr-FR`});
 });
 
